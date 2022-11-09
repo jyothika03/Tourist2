@@ -1,0 +1,106 @@
+
+
+<div class="container-fluid">
+  <div class=" bg-img img-responsive row">
+    <div class="  col-md-8 mx-auto">
+        <div class="card card-text-white bg-info mb-3">
+            <div class="card-header ">
+                <h3>Tourist Registration form</h3>
+            </div>
+            <div class=" card-body">
+                <form #tourForm="ngForm" (ngSubmit)="onSubmit(tourForm)"novalidate>
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input class="form-control" name="id" type="text" #id="ngModel" [(ngModel)]="touristForm.id" placeholder="Enter id" required pattern="[0-9]*"maxlength="4"  />
+                        <div *ngIf="id.invalid && (id.dirty||id.touched)"class="text-danger">
+                            <div *ngIf="id.errors?.['required']">
+                                Id is required
+                            </div>
+                            <div *ngIf="id.errors?.['pattern']">
+                                Id can only have numbers
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>FirstName</label>
+                        <input class="form-control" name="firstName" #firstname="ngModel" type="text"[(ngModel)]="touristForm.firstName" placeholder="Enter Firstname"  required pattern="[a-zA-Z]+" maxlength="15"/>
+                        <div *ngIf="firstname.invalid && (firstname.dirty||firstname.touched)"class="text-danger">
+                            <div *ngIf="firstname.errors?.['required']">
+                                Firstname is required
+                            </div>
+                            <div *ngIf="firstname.errors?.['pattern']">
+                                Firstname can have only alphabets
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>LastName</label>
+                        <input class="form-control" name="lastName" #lastname="ngModel" type="text" [(ngModel)]="touristForm.lastName" placeholder="Enter LastName" pattern="[a-zA-Z]+" maxlength="12"required/>
+                        <div *ngIf="lastname.invalid && (lastname.dirty||lastname.touched)"class="text-danger">
+                            <div *ngIf="lastname.errors?.['required']">
+                                lastname is required
+                            </div>
+                            <div *ngIf="lastname.errors?.['pattern']">
+                                lastname can have only alphabets
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label >Gender :</label>&nbsp;
+                        <input type="radio" name="gender" value="MALE" [(ngModel)]="touristForm.gender" required >
+                        <label>MALE</label>&nbsp;
+                        <input type="radio" name="gender"value="FEMALE" #radio="ngModel" [(ngModel)]="touristForm.gender" required>
+                        <label>FEMALE</label>
+                       
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input class="form-control" name="age" type="number" #age="ngModel" [(ngModel)]="touristForm.age" placeholder="Enter Age " pattern="[0-9]{1,2}" max="90" required/>
+                        <div *ngIf="age.invalid && (age.dirty||age.touched)"class="text-danger">
+                            <div *ngIf="age.errors?.['required']">
+                                Age is required
+                            </div>
+                            <div *ngIf="age.errors?.['pattern']">
+                                Age can have only numbers and two digits
+                            </div>
+                            <div *ngIf="age.errors?.['max']">
+                                Age cannot be more than 90
+                            </div>
+                        </div>
+                    </div>
+                    
+                <div class="form-group">
+                        <label>From place</label>
+                        <input class="form-control" name="fromPlace" type="text" [(ngModel)]="touristForm.fromPlace" #place="ngModel"  placeholder="Enter Place" required pattern="[a-zA-Z]+"/>
+                    <div *ngIf="place.invalid && (place.dirty||place.touched)"class="text-danger">
+                        <div *ngIf="place.errors?.['required']">
+                            Fromplace is required
+                        </div>
+                        <div *ngIf="place.errors?.['pattern']">
+                            From place can have only character
+                        </div>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label>Number of days</label>
+                        <input class="form-control" name="noOfDays" type="text" #numberofdays="ngModel"[(ngModel)]="touristForm.numberofdays" placeholder="Enter number of days" required pattern="[0-9]*"/> 
+                        <div *ngIf="numberofdays.invalid && (numberofdays.dirty||numberofdays.touched)"class="text-danger">
+                            <div *ngIf="numberofdays.errors?.['required']">
+                                Number of days is required
+                            </div>
+                            <div *ngIf="numberofdays.errors?.['pattern']">
+                                Number of days can have only have numbers
+                            </div>
+                        </div>   
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <button [disabled]="tourForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

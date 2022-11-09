@@ -1,0 +1,13 @@
+.container-fluid{
+    background-image: url("/assets/Touristimage1.jpg");
+  
+  width:100%;
+  padding:150px;
+  height:100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg{
+color:whitesmoke;
+text-align: center;
+}
